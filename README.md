@@ -1,32 +1,38 @@
-# _Sample project_
-
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
-
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
-
-
-
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
-
-## Example folder contents
-
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
-
+# ESP32 Mouse BLE
+ 
+Mouse inalámbrico por Bluetooth Low Energy usando una ESP32. Los botones y direcciones se controlan con GPIOs físicos.
+ 
+## Requisitos
+ 
+- ESP-IDF v5.x instalado ([guía oficial](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/))
+- ESP32 con soporte BLE
+- Python 3.8+
+ 
+## Compilar y flashear
+ 
+```bash
+# 1. Entra a la carpeta del proyecto
+cd nombre-del-proyecto
+ 
+# 2. Configura el target
+idf.py set-target esp32
+ 
+# 3. Compila
+idf.py build
+ 
+# 4. Flashea 
+idf.py -p /dev/ttyUSB0 flash
+ 
+# 5. Monitorea la salida serial
+idf.py -p /dev/ttyUSB0 monitor
 ```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+ 
+En Windows el puerto es tipo `COM3`. 
+ 
+## Uso
+ 
+1. Flashea y enciende la ESP32.
+2. En tu PC o celular busca dispositivos Bluetooth y conecta **ESP32_Mouse**.
+3. Presiona los botones para mover el cursor o hacer clic.
+
+ 
